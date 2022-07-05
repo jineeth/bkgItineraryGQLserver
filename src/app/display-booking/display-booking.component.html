@@ -1,0 +1,99 @@
+<mat-card>
+    <mat-card-content>
+        Hello, {{itineraryObj?.passengers?.title?.name}} {{itineraryObj?.passengers?.firstName}}
+        {{itineraryObj?.passengers?.lastName}}
+    </mat-card-content>
+</mat-card>
+
+<mat-card *ngFor="let connection of itineraryObj?.itinerary?.connections">
+    <div class="text-center">
+        <mat-icon matSuffix>flight</mat-icon> {{connection?.origin.name}}({{connection?.origin?.IATACode}}) to
+        {{connection?.destination?.name}}({{connection?.destination?.IATACode}})
+    </div>
+    <mat-card-content>
+        <mat-accordion>
+            <mat-expansion-panel *ngFor="let segment of connection.segments">
+                <mat-expansion-panel-header>
+                    <mat-icon matSuffix>flight</mat-icon>---
+                    {{segment?.departFrom?.name}}({{segment?.departFrom?.IATACode}})
+                    <mat-icon>arrow_right_alt</mat-icon> {{segment?.arriveOn?.name}}({{segment?.arriveOn?.IATACode}})
+                </mat-expansion-panel-header>
+                <div class="row">
+                    <div class="col-2 col-sm-1">
+                        <div>{{segment?.departFrom?.name}}({{segment?.departFrom?.IATACode}})</div>
+                        <div class="vl"></div>
+                        <div class="mt-2" style="white-space: nowrap">
+                            {{segment?.arriveOn?.name}}({{segment?.arriveOn?.IATACode}}) </div>
+                    </div>
+                    <div style="margin-top: 30px;" class="col-10 col-sm-11">
+
+                        <table class="table table-striped">
+                            <tbody>
+                                <tr class="table-success">
+                                    <th scope="row">Flight Number : {{segment?.marketingFlight?.carrier?.code}}
+                                        {{segment?.marketingFlight?.number}}</th>
+                                    <th scope="row">Status : {{segment?.marketingFlight?.status?.code}}</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="flight-box1">
+
+                            <div class="card ">
+                                <div class="card-body">
+
+                                    <h6>Duration : {{segment?.marketingFlight?.operatingFlight?.duration}}</h6>
+                                    <h6>Departure : {{segment?.marketingFlight?.operatingFlight?.localScheduledDeparture |
+                                        date:"dd/MM/yyyy
+                                        hh:mm:ss a":"+0000"}}</h6>
+                                    <h6>Arrival : {{segment.marketingFlight.operatingFlight.localScheduledArrival |
+                                        date:"dd/MM/yyyy
+                                        hh:mm:ss a":"+0000"}}</h6>
+                                    <h6>Aircraft Type : {{segment.marketingFlight.operatingFlight.equipment.code}}
+                                        {{segment.marketingFlight.operatingFlight.equipment.name}}</h6>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class=" mt-3 sales-box">
+                            <div class="col-sm-4 col-12">
+                                <div class="card ">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Book extra luggage</h5>
+                                        <p class="card-text">Book exra luggage at additional cost</p>
+                                        <a href="#" class="btn btn-primary">Book</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-sm-4 col-12 mr-2">
+                                <div class="card mr-5">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Upgrade your seat</h5>
+                                        <p class="card-text">Upgrade your seat at additional cost</p>
+                                        <a href="#" class="btn btn-primary">Upgrade</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-sm-4 col-12">
+                                <div class="card ">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Buy ancillary products</h5>
+                                        <p class="card-text">Buy products</p>
+                                        <a href="#" class="btn btn-primary">Buy</a>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </mat-expansion-panel>
+        </mat-accordion>
+
+    </mat-card-content>
+</mat-card>

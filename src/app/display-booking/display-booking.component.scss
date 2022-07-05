@@ -1,0 +1,62 @@
+.vl {
+    border-left: 1px solid blue;
+    height: 400px;
+}
+
+.vl::before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: 10;
+    top: 76px;
+    left: 17px;
+    border: 3px solid #3e31a3;
+    box-sizing: content-box;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.vl::after {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: 10;
+    top: 484px;
+    left: 17px;
+    border: 3px solid #3e31a3;
+    box-sizing: content-box;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.flight-box {
+    padding: 10px;
+    box-shadow: 0 4px 5px -2px rgb(0 0 0 / 20%), 0 7px 10px 1px rgb(0 0 0 / 14%), 0 2px 16px 1px rgb(0 0 0 / 12%);
+}
+
+.mat-card:not([class*="mat-elevation-z"]) {
+    box-shadow: none !important;
+}
+
+.Category_banner {
+    background-image: url(../../assets/images/img3.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 100px;
+    border: 0px solid darkgrey;
+    margin-top: 12px;
+    padding: 2px;
+}
+.card {
+    margin-right: 5px !important;
+}
+.sales-box {
+    display: flex;
+}
+@media screen and (max-width: 600px) {
+    .sales-box {
+        display: none;
+    }
+}
